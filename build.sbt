@@ -13,7 +13,7 @@ moduleName := "rogue_test_for_idea"
 libraryDependencies += "org.scalatest" %% "scalatest" % "1.6.1" % "test"
 
 libraryDependencies ++= {
-  val liftVersion = "2.4-M4" // Put the current/latest lift version here
+  val liftVersion = "2.4" // Put the current/latest lift version here
   Seq("net.liftweb" %% "lift-mongodb-record" % liftVersion)
 }
 

@@ -6,6 +6,7 @@ import com.foursquare.rogue.Rogue._
 import net.liftweb.mongodb.{DefaultMongoIdentifier, MongoDB}
 import com.mongodb.Mongo
 import net.liftweb.record.field.{LongField, StringField}
+import net.liftweb.http.RequestVar
 
 
 /**
@@ -22,19 +23,13 @@ class TestRecord private() extends MongoRecord[TestRecord] with LongPk[TestRecor
 
 object TestRecord extends TestRecord with MongoMetaRecord[TestRecord]
 
+object ReqVal extends RequestVar[String]("asdf")
+
 class Test extends org.scalatest.FunSuite with org.scalatest.matchers.ShouldMatchers {
   test("rogue works, but type inference in scala-plugin fails") {
     MongoDB.defineDb(DefaultMongoIdentifier, new Mongo, "test")
 
-    val v = TestRecord.createRecord.field1("smt").save
+    val v = TestRecord.createRecord.field1("smt")
 
-    val rec = TestRecord where (_.field1 eqs "smt") get()
-
-    TestRecord where (_.id eqs 2L) and (_.longField eqs 3L)
-
-    rec should not be None
-    rec.get.id.is should equal (v.id.is)
-    
-    net.liftweb.sitemap.*
   }
 }
