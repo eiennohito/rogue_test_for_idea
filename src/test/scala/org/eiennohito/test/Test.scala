@@ -24,12 +24,16 @@ class TestRecord private() extends MongoRecord[TestRecord] with LongPk[TestRecor
 object TestRecord extends TestRecord with MongoMetaRecord[TestRecord]
 
 object ReqVal extends RequestVar[String]("asdf")
+//Red code for ReqVal
+//Object creation impossible since member set(in: Settable.this.type#ValueType): Settable.this.type#ValueType in net.liftweb.util.Settable is not defined
 
 class Test extends org.scalatest.FunSuite with org.scalatest.matchers.ShouldMatchers {
   test("rogue works, but type inference in scala-plugin fails") {
     MongoDB.defineDb(DefaultMongoIdentifier, new Mongo, "test")
 
     val v = TestRecord.createRecord.field1("smt")
-
+    //Red code for field1.apply param
+    //Type mismatch, expected Box[field1.MyType], actual: String
+    //Type mismatch, expected field1.MyType, actual: String
   }
 }
