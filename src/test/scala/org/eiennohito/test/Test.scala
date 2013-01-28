@@ -25,20 +25,12 @@ class TestRecord private() extends MongoRecord[TestRecord] with LongPk[TestRecor
 object TestRecord extends TestRecord with MongoMetaRecord[TestRecord]
 
 
-//Red code for ReqVal
-//Object creation impossible since member set(in: Settable.this.type#ValueType): Settable.this.type#ValueType in net.liftweb.util.Settable is not defined
-
 class Test extends org.scalatest.FunSuite with org.scalatest.matchers.ShouldMatchers {
 
   test("rogue works, but type inference in scala-plugin fails") {
-    //MongoDB.defineDb(DefaultMongoIdentifier, new Mongo, "test")
     import LiftRogue._
 
     val x = TestRecord where (_.field1 eqs "test") fetch()
     val y = TestRecord where (_.longField eqs 5L) fetch()
-
-    //Red code for field1.apply param
-    //Type mismatch, expected Box[field1.MyType], actual: String
-    //Type mismatch, expected field1.MyType, actual: String
   }
 }
