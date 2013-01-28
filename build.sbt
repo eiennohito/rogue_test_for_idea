@@ -4,19 +4,10 @@ organization := "org.eiennohito"
 
 name := "rogue_test_for_idea"
 
-version := "0.1-SNAPSHOT"
+version := "0.2-SNAPSHOT"
 
-scalaVersion := "2.9.1"
+scalaVersion := "2.9.2"
 
 moduleName := "rogue_test_for_idea"
 
-libraryDependencies += "org.scalatest" %% "scalatest" % "1.6.1" % "test"
-
-libraryDependencies ++= {
-  val liftVersion = "2.4" // Put the current/latest lift version here
-  Seq("net.liftweb" %% "lift-mongodb-record" % liftVersion)
-}
-
-libraryDependencies += "com.foursquare" %% "rogue" % "1.0.28" intransitive()
-
-parallelExecution := true
+libraryDependencies += "org.scalatest" %% "scalatest" % "1.9.1" % "test"
